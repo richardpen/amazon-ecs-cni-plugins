@@ -16,8 +16,8 @@ package main
 import (
 	"runtime"
 
+	"github.com/aws/amazon-ecs-cni-plugins/pkg/version/cnispec"
 	"github.com/aws/amazon-ecs-cni-plugins/plugins/eni/commands"
-	"github.com/aws/amazon-ecs-cni-plugins/plugins/eni/version/cnispec"
 	log "github.com/cihub/seelog"
 	"github.com/containernetworking/cni/pkg/skel"
 )
