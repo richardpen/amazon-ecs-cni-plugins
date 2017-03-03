@@ -16,7 +16,7 @@ package main
 import (
 	"runtime"
 
-	"github.com/aws/amazon-ecs-cni-plugins/pkg/version/cnispec"
+	"github.com/aws/amazon-ecs-cni-plugins/pkg/version"
 	"github.com/aws/amazon-ecs-cni-plugins/plugins/eni/commands"
 	log "github.com/cihub/seelog"
 	"github.com/containernetworking/cni/pkg/skel"
@@ -30,5 +30,5 @@ func main() {
 	// TODO logging config
 	defer log.Flush()
 
-	skel.PluginMain(commands.Add, commands.Del, cnispec.GetSpecVersionSupported())
+	skel.PluginMain(commands.Add, commands.Del, version.GetPluginVersionSupported())
 }

@@ -11,22 +11,14 @@
 // express or implied. See the License for the specific language governing
 // permissions and limitations under the License.
 
-package cnispec
+package version
 
 import "github.com/containernetworking/cni/pkg/version"
 
-// specVersionSupported is the version of the CNI spec that's supported by the
-// ENI plugin. It's set to 0.2.0, which means that we support the following
-// commands:
-// * ADD
-// * DELETE
-// * VERSION
-// Refer to https://github.com/containernetworking/cni/blob/master/SPEC.md
-// for details
-var specVersionSupported = version.PluginSupports("0.2.0")
+var pluginVersionSupported = version.PluginSupports("0.3.0")
 
-// GetSpecVersionSupported gets the version of the CNI spec that's supported
+// GetPluginVersionSupported gets the version of the CNI version that's supported
 // by the ENI plugin
-func GetSpecVersionSupported() version.PluginInfo {
-	return specVersionSupported
+func GetPluginVersionSupported() version.PluginInfo {
+	return pluginVersionSupported
 }

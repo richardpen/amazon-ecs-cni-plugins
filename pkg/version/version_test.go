@@ -11,7 +11,7 @@
 // express or implied. See the License for the specific language governing
 // permissions and limitations under the License.
 
-package cnispec
+package version
 
 import (
 	"testing"
@@ -20,9 +20,9 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestGetSpecVersionsSupported(t *testing.T) {
-	specVersionSupported = version.PluginSupports("0.2.0")
-	pluginInfo := GetSpecVersionSupported()
+func TestGetPluginVersionsSupported(t *testing.T) {
+	pluginVersionSupported = version.PluginSupports("0.2.0")
+	pluginInfo := GetPluginVersionSupported()
 	supportedVersions := pluginInfo.SupportedVersions()
 	assert.NotEmpty(t, supportedVersions)
 	assert.Len(t, supportedVersions, 1)
