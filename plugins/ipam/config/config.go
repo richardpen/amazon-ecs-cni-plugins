@@ -16,10 +16,10 @@ package config
 import (
 	"encoding/json"
 	"net"
+	"time"
 
 	"github.com/containernetworking/cni/pkg/ip"
 	"github.com/containernetworking/cni/pkg/types"
-	"github.com/containernetworking/cni/pkg/types/current"
 	"github.com/pkg/errors"
 )
 
@@ -71,7 +71,8 @@ func LoadIPAMConfig(bytes []byte, args string) (*IPAMConfig, string, error) {
 
 	// Validate the ip if specified explicitly
 	if conf.IPAM.IPAddress.IP != nil {
-		err := validateSubnetIP(conf.IPAM.IPAddress.IP, subnet)
+		err := validateSubnetIP(conf.IPAM.IPAddress.IP, net.IPNet{IP: conf.IPAM.Subnet.IP,
+			Mask: conf.IPAM.Subnet.Mask})
 		if err != nil {
 			return nil, conf.CNIVersion, err
 		}
