@@ -16,12 +16,16 @@ package main
 import (
 	"encoding/json"
 	"net"
+	"time"
 
 	"github.com/containernetworking/cni/pkg/types"
 	"github.com/pkg/errors"
 )
 
-const SupportedVersions = ""
+const (
+	LastKnownIPKey           = "lastKnownIP"
+	DefaultConnectionTimeout = 5 * time.Second
+)
 
 // IPAMConfig represents the IP related network configuration
 type IPAMConfig struct {
@@ -31,6 +35,9 @@ type IPAMConfig struct {
 	IPAddress types.IPNet    `json:"ipAddress,omitempty"`
 	Gateway   net.IP         `json:"gateway,omitempty"`
 	Routes    []*types.Route `json:"routes,omitempty"`
+	DB        string         `json:"db,omitempty"`
+	Bucket    string         `json:"bucket,omitempty"`
+	Timeout   string         `json:"timeout,omitempty"`
 }
 
 // Net loads the option from configuration file
